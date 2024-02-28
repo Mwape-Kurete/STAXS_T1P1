@@ -12,7 +12,7 @@ function Sidebar() {
             <span className="ms-1 fs-4">Brand</span>
           </a>
 
-          <ul class="nav">
+          <ul class="nav nav-pills">
             <li class="nav-item">
               <a href="" class="nav-link"></a>
             </li>
