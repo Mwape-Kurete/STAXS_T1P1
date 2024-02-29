@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar.js";
 import Cards from "./Cards";
 import "./Dashboard.css";
 
