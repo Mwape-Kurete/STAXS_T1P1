@@ -1,20 +1,69 @@
-.sidebar_menu{
-    background: rgba(90, 148, 77, 0.09);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    margin-top: 20px;
-    margin-bottom: 50px;
-    border-radius: 20px;
-    padding-top: 15px;
-    padding-left: 15px;
-    width: 100% !important;
+.sidebar_menu {
+  background: rgba(90, 148, 77, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  padding-top: 15px;
+  padding-left: 15px;
+  width: 100% !important;
 }
 
-.nav-link{
-    color: white;
+a.nav-link.current {
+  color: #ace032;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.row-sidebar{
-    width: 100%;
+a.nav-link {
+  color: white;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a.nav-link:hover {
+  color: #ff6b61;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  border-bottom: 1px solid white;
+}
+
+.row-sidebar {
+  width: 100%;
+}
+
+.logo {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: larger;
+  color: #ace032;
+}
+
+.logo-cont:hover {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: larger;
+  color: #ff6b61;
+}
+
+.logo:hover {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: larger;
+  color: #ff6b61;
+  cursor: pointer;
 }

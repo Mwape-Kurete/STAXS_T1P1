@@ -18,6 +18,9 @@ function Dashboard() {
         <div className="col justify-content-md-center">
           <div className="hero-section">
             <h1 className="dash-header">Welcome To Staxs</h1>
+            <h5>
+              Comapre All Stats From Your Favourite Artists, Tracks and Albums
+            </h5>
             <p className="dash-txt">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
               modi obcaecati sapiente libero commodi dicta perferendis! Odit,

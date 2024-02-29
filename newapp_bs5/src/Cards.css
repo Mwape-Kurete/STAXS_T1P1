@@ -1,0 +1,28 @@
+img {
+  max-height: 150px;
+}
+
+.card {
+  border-radius: 25px;
+}
+
+.card-text {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.btn {
+  background: rgb(31, 31, 31);
+  border-radius: 20px;
+
+  padding: 10px;
+  margin-inline-end: auto;
+}
+
+.card01 {
+  background-color: #ff6b61;
+}
+
+.card03 {
+  background-color: #ace032;
+}

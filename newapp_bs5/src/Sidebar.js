@@ -8,9 +8,9 @@ function Sidebar() {
       <div className="row row-sidebar">
         <div className="col-auto col-md-3 min-vh-100 d-flex justify-content-between flex-column sidebar_menu">
           <div>
-            <a className="text-decoration-none text-white d-flex align-itemcenter">
+            <a className="text-decoration-none text-white d-flex align-itemcenter logo-cont">
               <i className="bi bi-speedometer"></i>
-              <span className="ms-1">Brand</span>
+              <span className="ms-1 logo">STAXS</span>
             </a>
             <hr className="text-secondary" />
             <ul class="nav nav-pills flex-column ">
