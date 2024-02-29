@@ -3,8 +3,18 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 100% !important;
 }
 
 .nav-link{
     color: white;
+}
+
+.row-sidebar{
+    width: 100%;
 }

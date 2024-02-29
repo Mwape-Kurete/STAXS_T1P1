@@ -1,15 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Sidebar from "./Sidebar.js";
-import Cards from "./Cards.js";
+import Dashboard from "./Dashboard";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <Sidebar />
-    <Cards />
+    <Dashboard />
   </>
 );
 

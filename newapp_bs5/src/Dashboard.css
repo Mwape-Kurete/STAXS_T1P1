@@ -1,0 +1,31 @@
+.dash-cont {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.hero-section {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 1.75%;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 95px;
+  padding-bottom: 95px;
+  color: rgb(255, 255, 255);
+
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.7px);
+  -webkit-backdrop-filter: blur(4.7px);
+  border: 1px solid rgba(255, 255, 255, 0.51);
+
+  text-align: center;
+}
+
+.row-card-car {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 2%;
+  max-height: 350px;
+}
