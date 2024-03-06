@@ -1,7 +1,7 @@
 import "./Cards.css";
-import graph1 from "./img/Group 15.svg";
-import graph2 from "./img/Group 16.svg";
-import graph3 from "./img/Group 17.svg";
+import graph1 from "../img/Group 15.svg";
+import graph2 from "../img/Group 16.svg";
+import graph3 from "../img/Group 17.svg";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";

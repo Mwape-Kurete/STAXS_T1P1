@@ -2,17 +2,17 @@ import "./App.css";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Compare from "./Compare";
-import Timeline from "./Timeline";
-import Dashboard from "./Dashboard";
+import Compare from "./Pages/Compare";
+import Timeline from "./Pages/Timeline";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/Compare" element={<Compare />} />
-        <Route path="/Timeline" element={<Timeline />} />
+        <Route index element={<Dashboard />} />
+        <Route path="compare" element={<Compare />} />
+        <Route path="timeline" element={<Timeline />} />
       </Routes>
     </Router>
   );

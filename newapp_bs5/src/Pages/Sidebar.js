@@ -1,6 +1,6 @@
 // importing styles and images
 import "./Sidebar.css";
-import logo from "./img/logo.svg";
+import logo from "../img/logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 

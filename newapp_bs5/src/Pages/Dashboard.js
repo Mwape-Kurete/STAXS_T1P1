@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar.js";
-import Cards from "./Cards";
+import Cards from "./Cards.js";
 import "./Dashboard.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
