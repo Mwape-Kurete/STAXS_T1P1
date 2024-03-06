@@ -11,7 +11,7 @@
   width: 100% !important;
 }
 
-Link.nav-link.current {
+.nav-link.current {
   color: #ace032;
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
@@ -19,7 +19,7 @@ Link.nav-link.current {
   font-style: normal;
 }
 
-Link.nav-link {
+.nav-link {
   color: white;
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
@@ -27,7 +27,7 @@ Link.nav-link {
   font-style: normal;
 }
 
-Link.nav-link:hover {
+.nav-link:hover {
   color: #ff6b61;
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
