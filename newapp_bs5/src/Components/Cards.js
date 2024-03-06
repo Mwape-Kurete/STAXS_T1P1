@@ -1,4 +1,4 @@
-import "./Cards.css";
+import "../Styles/Cards.css";
 import graph1 from "../img/Group 15.svg";
 import graph2 from "../img/Group 16.svg";
 import graph3 from "../img/Group 17.svg";

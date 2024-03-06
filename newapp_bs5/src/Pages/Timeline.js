@@ -1,4 +1,5 @@
 import Sidebar from "../Components/Sidebar";
+import "../Styles/Timeline.css";
 
 function Timeline() {
   return (

@@ -1,6 +1,6 @@
 import Sidebar from "../Components/Sidebar.js";
 import Cards from "../Components/Cards.js";
-import "./Dashboard.css";
+import "../Styles/Dashboard.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";

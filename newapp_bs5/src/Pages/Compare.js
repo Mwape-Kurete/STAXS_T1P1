@@ -1,4 +1,5 @@
 import Sidebar from "../Components/Sidebar";
+import "../Styles/Compare.css";
 
 function Compare() {
   return (
