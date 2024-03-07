@@ -12,14 +12,6 @@
   height: 100vh;
 }
 
-.nav-link.current {
-  color: #ace032 !important;
-  font-family: "Josefin Sans", sans-serif !important;
-  font-optical-sizing: auto !important;
-  font-weight: 300 !important;
-  font-style: normal !important;
-}
-
 .nav-link {
   color: white !important;
   font-family: "Josefin Sans", sans-serif !important;

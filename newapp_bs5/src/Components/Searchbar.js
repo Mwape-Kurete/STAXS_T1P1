@@ -5,7 +5,7 @@ function Searchbar() {
     <div className="container-fluid search-cont">
       <div className="row searchbar-row">
         <div className="col-12 search-col">
-          <form className="d-flex" role="search">
+          <form className="d-flex search-form" role="search">
             <input
               className="form-control me-2"
               type="search"
@@ -13,7 +13,7 @@ function Searchbar() {
               aria-label="Search"
             />
             <button className="btn btn-outline-success" type="submit">
-              Search
+              <i class="bi bi-search"></i>
             </button>
           </form>
         </div>

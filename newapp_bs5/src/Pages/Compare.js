@@ -9,9 +9,21 @@ function Compare() {
         <div className="col-2 sidebar-col">
           <Sidebar />
         </div>
-        <div className="col justify-content-md-center">
-          <Searchbar />
-          <h1>No code here yet</h1>
+        <div className="col justify-content-md-center page-content">
+          <div className="row">
+            <div className="col-12 searchbar">
+              <Searchbar />
+            </div>
+            {/* Artist Comparison goes Below */}
+            <div className="row comparisons">
+              <div className="col-6 artist">
+                <h1>artist 1</h1>
+              </div>
+              <div className="col-6 artist">
+                <h1>artist 2</h1>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
