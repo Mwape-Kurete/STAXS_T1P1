@@ -1,4 +1,5 @@
 import Sidebar from "../Components/Sidebar";
+import Searchbar from "../Components/Searchbar";
 import "../Styles/Compare.css";
 
 function Compare() {
@@ -9,6 +10,7 @@ function Compare() {
           <Sidebar />
         </div>
         <div className="col justify-content-md-center">
+          <Searchbar />
           <h1>No code here yet</h1>
         </div>
       </div>

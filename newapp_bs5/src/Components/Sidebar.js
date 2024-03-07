@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     //start of sidebar nav section
-    <div className="container-fluid ">
+    <div className="container-fluid  sticky-top">
       <div className="row row-sidebar">
         <div className="col-auto col-md-3 min-vh-100 d-flex justify-content-between flex-column sidebar_menu">
           <div>
