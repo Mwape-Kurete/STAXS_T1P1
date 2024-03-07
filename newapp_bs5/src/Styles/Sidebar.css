@@ -12,29 +12,29 @@
   height: 100vh;
 }
 
-Link.nav-link.current {
-  color: #ace032;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+.nav-link.current {
+  color: #ace032 !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
 }
 
-Link.nav-link {
-  color: white;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+.nav-link {
+  color: white !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
 }
 
-Link.nav-link:hover {
-  color: #ff6b61;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  border-bottom: 1px solid white;
+.nav-link:hover {
+  color: #ff6b61 !important;
+  font-family: "Josefin Sans", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  border-bottom: 1px solid white !important;
 }
 
 .row-sidebar {

@@ -1,3 +1,8 @@
+body {
+  background: url("./img/Dashboard.jpg");
+  object-fit: fill;
+}
+
 .App {
   text-align: center;
 }
