@@ -18,7 +18,7 @@ function Cards() {
               <p className="card-text">
                 Select 2 Artists and compare their monthly listeners
               </p>
-              <a href="#" className="btn btn-dark">
+              <a href="#" className="btn btn-light">
                 Comapare Artists
               </a>
             </div>
@@ -32,7 +32,7 @@ function Cards() {
               <p className="card-text">
                 View all the stats behind your favourite albums
               </p>
-              <a href="#" className="btn btn-dark">
+              <a href="#" className="btn btn-light">
                 View Album Stats
               </a>
             </div>
@@ -46,7 +46,7 @@ function Cards() {
               <p className="card-text">
                 Compare Your Artists Top Tracks against other artists
               </p>
-              <a href="#" className="btn btn-dark">
+              <a href="#" className="btn btn-light">
                 Compare Top Tracks
               </a>
             </div>
