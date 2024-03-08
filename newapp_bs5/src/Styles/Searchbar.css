@@ -2,13 +2,21 @@
   height: 30px;
   border-radius: 55px;
 
-  background: rgba(90, 148, 77, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: rgba(172, 224, 50, 0.25);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border: none;
+  color: white !important;
+  align-items: center;
+}
+
+::placeholder {
   color: white;
 }
 
-input {
-  color: white;
+.btn-outline-success {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6.5px);
+  border-radius: 15px;
+  color: rgb(255, 255, 255);
 }

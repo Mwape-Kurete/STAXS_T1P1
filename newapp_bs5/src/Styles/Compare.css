@@ -16,3 +16,19 @@
 
   height: 700px;
 }
+
+.artist {
+  margin-top: 1.75%;
+  border: 1px rgba(255, 255, 255, 0.126) solid;
+  border-radius: 10px;
+
+  margin: 25px;
+}
+
+.content {
+  margin-top: 5px;
+}
+
+hr {
+  border: 1px rgba(255, 255, 255, 0.126) solid;
+}

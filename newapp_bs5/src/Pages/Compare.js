@@ -16,11 +16,27 @@ function Compare() {
             </div>
             {/* Artist Comparison goes Below */}
             <div className="row comparisons">
-              <div className="col-6 artist">
-                <h1>artist 1</h1>
+              <div className="col artist">
+                <div className="content">
+                  <div className="artist-card">
+                    <h1>artist card goes here</h1>
+                  </div>
+                  <hr />
+                  <div className="artist-graph">
+                    <h1>artist graphs go here</h1>
+                  </div>
+                </div>
               </div>
-              <div className="col-6 artist">
-                <h1>artist 2</h1>
+              <div className="col artist">
+                <div className="content">
+                  <div className="artist-card">
+                    <h1>artist card goes here</h1>
+                  </div>
+                  <hr />
+                  <div className="artist-graph">
+                    <h1>artist graphs go here</h1>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
