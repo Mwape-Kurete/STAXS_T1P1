@@ -10,6 +10,15 @@
   align-items: center;
 }
 
+.form-control:focus {
+  background: rgba(172, 224, 50, 1);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  box-shadow: 0 0px 155px 0 rgba(47, 47, 47, 0.37);
+  border: none;
+  color: white !important;
+}
+
 ::placeholder {
   color: white;
 }
