@@ -30,10 +30,11 @@ p {
 .album-meta {
   color: #ff6b61;
 }
-img {
+.album-cover {
   float: left;
   margin-top: -20px;
   margin-right: 20px;
+  margin-left: 120px;
 }
 
 .all_album_info {
