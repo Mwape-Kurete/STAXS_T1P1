@@ -10,7 +10,7 @@ function Timeline() {
         </div>
         <div className="col justify-content-md-center">
           <div className="row">
-            <div className="col-12">
+            <div className="col-12 albmun-timeline-cont">
               <div className="album-info">
                 <img className="album-cover" id="albumCover" src="" alt="" />
                 <h1 id="album-name">A Seat at the table</h1>
