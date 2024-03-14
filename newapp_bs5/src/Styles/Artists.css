@@ -1,0 +1,25 @@
+.artist-img {
+  float: left;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 1.75%;
+  margin-right: 15px;
+  box-shadow: rgba(229, 229, 229, 0.1) 0px 20px 25px -5px,
+    rgba(158, 158, 158, 0.04) 0px 10px 10px -5px;
+}
+
+.artist-metaData {
+  margin-top: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+}
+
+.artist-name {
+  color: #ff6b61;
+}

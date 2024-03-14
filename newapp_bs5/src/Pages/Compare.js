@@ -1,5 +1,7 @@
 import Sidebar from "../Components/Sidebar";
 import Searchbar from "../Components/Searchbar";
+import Artist from "../Components/Artist";
+
 import "../Styles/Compare.css";
 
 function Compare() {
@@ -18,24 +20,12 @@ function Compare() {
             <div className="row comparisons">
               <div className="col artist">
                 <div className="content">
-                  <div className="artist-card">
-                    <h1>artist card goes here</h1>
-                  </div>
-                  <hr />
-                  <div className="artist-graph">
-                    <h1>artist graphs go here</h1>
-                  </div>
+                  <Artist />
                 </div>
               </div>
               <div className="col artist">
                 <div className="content">
-                  <div className="artist-card">
-                    <h1>artist card goes here</h1>
-                  </div>
-                  <hr />
-                  <div className="artist-graph">
-                    <h1>artist graphs go here</h1>
-                  </div>
+                  <Artist />
                 </div>
               </div>
             </div>
