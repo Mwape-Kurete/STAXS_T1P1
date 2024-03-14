@@ -1,12 +1,17 @@
 import "../Styles/Artists.css";
 import Temp1 from "../img/6838e615-ab19-49fe-89c8-efbe6964f2bf.jpeg";
 
+import { CloseButton } from "react-bootstrap";
+
 function Artist() {
   return (
     <div className="artistContainer">
       <div className="container-fluid artist-card ">
         <div className="row">
           <div className="col-12">
+            <div className="close">
+              <CloseButton />
+            </div>
             <img src={Temp1} alt="artist" className="artist-img" />
             <div className="artist-metaData">
               <h6>

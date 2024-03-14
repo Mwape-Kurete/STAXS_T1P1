@@ -22,10 +22,10 @@ function Dashboard() {
               Compare All Stats From Your Favourite Artists, Tracks and Albums.
             </h5>
             <p className="dash-txt">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-              modi obcaecati sapiente libero commodi dicta perferendis! Odit,
-              eos. Eveniet unde, quas cum vitae ducimus libero expedita cumque
-              ipsa natus. Voluptates!
+              Explore music effortlessly with our website. Using Chart.js and
+              Spotify's Web API, we offer dynamic comparisons of artists,
+              tracks, and albums. Discover trends, popularity, and emerging
+              talents in today's music scene with intuitive data visualizations.
             </p>
           </div>
 

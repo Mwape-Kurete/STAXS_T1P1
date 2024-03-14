@@ -23,3 +23,17 @@
 .artist-name {
   color: #ff6b61;
 }
+
+.close {
+  float: left;
+  margin-top: 10px;
+}
+
+.comp-filter {
+  margin-top: 1.75%;
+}
+
+.btn-check:checked + .btn {
+  background-color: #ff6b61;
+  border-color: white;
+}

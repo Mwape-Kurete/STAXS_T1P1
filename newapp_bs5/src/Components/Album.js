@@ -1,5 +1,8 @@
 import "../Styles/Album.css";
 import Solange from "../img/Solange - A Seat At the Table (2 LPs) - 2 Vinyl LP _ 08-12-2016 _ Regulier Vinyl.jpeg";
+import Linegraph from "./charts/Linegraph";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Album() {
   return (
@@ -35,10 +38,48 @@ function Album() {
         <div className="col-12 timeline-cont">
           <div className="row">
             <div className="col timeline">
-              <p>timelines Go here</p>
+              <Linegraph />
             </div>
             <div className="col-2 filters">
-              <p>filters go here</p>
+              <div className="col-12 comp-filter">
+                <div
+                  class="btn-group-vertical"
+                  role="group"
+                  aria-label="Vertical radio toggle button group"
+                >
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="vbtn-radio"
+                    id="vbtn-radio1"
+                    autocomplete="off"
+                    checked
+                  />
+                  <label class="btn btn-outline-light" for="vbtn-radio1">
+                    Radio 1
+                  </label>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="vbtn-radio"
+                    id="vbtn-radio2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-light" for="vbtn-radio2">
+                    Radio 2
+                  </label>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="vbtn-radio"
+                    id="vbtn-radio3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-light" for="vbtn-radio3">
+                    Radio 3
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
