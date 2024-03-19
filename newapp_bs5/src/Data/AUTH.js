@@ -19,3 +19,9 @@ request.post(authOptions, function (error, response, body) {
     var token = body.access_token;
   }
 });
+
+function AUTH() {
+  return authOptions;
+}
+
+export default AUTH;

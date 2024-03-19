@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import AUTH from "./AUTH";
 import axios from "axios";
 
 function GetArtist() {
