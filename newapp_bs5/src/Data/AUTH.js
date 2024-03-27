@@ -6,11 +6,11 @@ var client_secret = "7d449a9084ca46b2a30397b3d9ad11c8";
 
 // const response = await axios.post(
 //   "https://accounts.spotify.com/api/token",
-//   new URLSearchParams({
-//     grant_type: "client_credentials",
-//     client_id: client_id,
-//     client_secret: client_secret,
-//   })
+// new URLSearchParams({
+//   grant_type: "client_credentials",
+//   client_id: client_id,
+//   client_secret: client_secret,
+// })
 // );
 
 async function AUTH() {

@@ -7,7 +7,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import AUTH from "../Data/AUTH.js";
 
 function Dashboard() {
-  <AUTH />;
   return (
     <div className="container-fluid dash-cont">
       {/* Dashboard Page Starts Here */}
