@@ -10,6 +10,7 @@ const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
     const data = qs.stringify({ grant_type: "client_credentials" });
@@ -23,6 +24,7 @@ function Searchbar() {
       .then((response) => {
         console.log(response.data); // Here you would typically store the access token in the state or context
       })
+
       .catch((error) =>
         console.error("Error fetching the access token:", error)
       );
