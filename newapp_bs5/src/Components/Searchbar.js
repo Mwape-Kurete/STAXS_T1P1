@@ -22,13 +22,18 @@ function Searchbar() {
     axios
       .post("https://accounts.spotify.com/api/token", data, { headers })
       .then((response) => {
-        console.log(response.data); // Here you would typically store the access token in the state or context
+        setAccessToken(response.data.access_token); // Here you would typically store the access token in the state or context
       })
 
       .catch((error) =>
         console.error("Error fetching the access token:", error)
       );
   }, []);
+
+  //Search
+  async function search() {
+    console.log("searching for " + searchInput);
+  }
 
   return (
     <div className="container-fluid search-cont">
@@ -46,7 +51,7 @@ function Searchbar() {
               value={searchInput}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  console.log("Pressed enter");
+                  search();
                   // Here you can call the function to search with the input value
                 }
               }}
@@ -56,7 +61,7 @@ function Searchbar() {
               className="btn btn-outline-success"
               type="submit"
               onClick={() => {
-                console.log("HIT SEARCH");
+                search();
                 // Here you can call the function to search with the input value
               }}
             >
