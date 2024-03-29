@@ -8,15 +8,39 @@ function Artist() {
     <div className="artistContainer">
       <div className="container-fluid artist-card ">
         <div className="row">
-          <div className="col-12">
+          <div className="col-6">
             <div className="close">
               <CloseButton />
             </div>
-            <img src={Temp1} alt="artist" className="artist-img" />
+            <img
+              src={Temp1}
+              alt="artist"
+              className="artist-img"
+              id="artistCover1"
+            />
             <div className="artist-metaData">
               <h6>
                 Artist{" "}
-                <span id="artistName" className="artist-name">
+                <span id="artistName1" className="artist-name">
+                  King Krule
+                </span>
+              </h6>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="close">
+              <CloseButton />
+            </div>
+            <img
+              src={Temp1}
+              alt="artist"
+              className="artist-img"
+              id="artistCover2"
+            />
+            <div className="artist-metaData">
+              <h6>
+                Artist{" "}
+                <span id="artistName2" className="artist-name">
                   King Krule
                 </span>
               </h6>
@@ -70,7 +94,7 @@ function Artist() {
               </div>
             </div>
           </div>
-          <div className="col-12 comp-graph">
+          <div className="col-12 comp-graph justify-content-center">
             <div className="artist-graph">
               <h1>artist graphs go here</h1>
             </div>

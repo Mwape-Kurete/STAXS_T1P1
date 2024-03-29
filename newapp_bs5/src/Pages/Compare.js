@@ -23,11 +23,6 @@ function Compare() {
                   <Artist />
                 </div>
               </div>
-              <div className="col artist">
-                <div className="content">
-                  <Artist />
-                </div>
-              </div>
             </div>
           </div>
         </div>
