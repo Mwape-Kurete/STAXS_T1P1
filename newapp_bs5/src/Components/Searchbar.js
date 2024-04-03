@@ -28,6 +28,8 @@ function Searchbar() {
         setAccessToken(response.data.access_token); // saving the access token
 
         console.log(response.data); // Here you would typically store the access token in the state or context
+
+        console.log("the stored token is: " + accessToken);
       })
 
       .catch((error) =>
@@ -44,7 +46,7 @@ function Searchbar() {
     // Artist ID -> get request using search to get Artist ID
     const artistParameters = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${btoa(accessToken)}`,
+      Authorization: `Bearer ${accessToken}`,
     };
     var artistID = await axios
       .get(
