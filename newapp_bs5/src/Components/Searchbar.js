@@ -32,7 +32,13 @@ function Searchbar() {
 
   //Search
   async function search() {
-    console.log("searching for " + searchInput);
+    console.log("searching for " + searchInput); // testing search input
+
+    // Artist ID -> get request using search to get Artist ID
+
+    //Get request artist ID grav all albums for that artist
+
+    // Display those albums to the users
   }
 
   return (
