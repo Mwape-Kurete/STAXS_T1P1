@@ -7,7 +7,7 @@ import "../Styles/Searchbar.css"; // Make sure the path to your CSS file is corr
 // For local development, you might need to prefix these with REACT_APP_
 const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
 const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
-const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
+//const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
@@ -16,7 +16,7 @@ function Searchbar() {
 
   useEffect(() => {
     const data = qs.stringify({ grant_type: "client_credentials" });
-    const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
+    //const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Basic ${btoa(CLIENT_ID + ":" + CLIENT_SECRET)}`, // Base64 encode client ID and client secret
@@ -54,10 +54,10 @@ function Searchbar() {
         { artistParameters }
       )
       .then((response) => {
-        console.log(response.data);
+        console.log(response.json()).then((data) => console.log(data));
       })
       .catch((error) => {
-        console.log("Error Searching artist" + error);
+        console.log("Error Searching artist " + error);
       });
 
     //Get request artist ID grab all Stats and albums for that artist
