@@ -7,13 +7,16 @@ import "../Styles/Searchbar.css"; // Make sure the path to your CSS file is corr
 // For local development, you might need to prefix these with REACT_APP_
 const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
 const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
+const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
+  //var [refreshToken, setRefreshToken] = useState("");
 
   useEffect(() => {
     const data = qs.stringify({ grant_type: "client_credentials" });
+    const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
     const headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Basic ${btoa(CLIENT_ID + ":" + CLIENT_SECRET)}`, // Base64 encode client ID and client secret
@@ -22,21 +25,40 @@ function Searchbar() {
     axios
       .post("https://accounts.spotify.com/api/token", data, { headers })
       .then((response) => {
-        setAccessToken(response.data.access_token); // Here you would typically store the access token in the state or context
+        setAccessToken(response.data.access_token); // saving the access token
+
+        console.log(response.data); // Here you would typically store the access token in the state or context
       })
 
       .catch((error) =>
         console.error("Error fetching the access token:", error)
       );
+
+    // Axios POST request to refresh the access token using the refresh token
   }, []);
 
-  //Search
+  //Search --> NEEDS TO BE ASYNC BECAUSE OF MULTIPLE FETCH FUNCTIONS
   async function search() {
     console.log("searching for " + searchInput); // testing search input
 
     // Artist ID -> get request using search to get Artist ID
+    const artistParameters = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${btoa(accessToken)}`,
+    };
+    var artistID = await axios
+      .get(
+        "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
+        { artistParameters }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error Searching artist" + error);
+      });
 
-    //Get request artist ID grav all albums for that artist
+    //Get request artist ID grab all Stats and albums for that artist
 
     // Display those albums to the users
   }
