@@ -8,11 +8,12 @@ import "../Styles/Searchbar.css"; // Make sure the path to your CSS file is corr
 const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
 const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
 //const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
+var access_token = "";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
   //const [accessToken, setAccessToken] = useState("");
-  var access_token = "";
+
   //var [refreshToken, setRefreshToken] = useState("");
 
   useEffect(() => {
@@ -44,14 +45,16 @@ function Searchbar() {
   //Search --> NEEDS TO BE ASYNC BECAUSE OF MULTIPLE FETCH FUNCTIONS
   async function search() {
     console.log("searching for " + searchInput); // testing search input
-
+    console.log(access_token);
     // Artist ID -> get request using search to get Artist ID
     const artistParameters = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Base ${btoa(access_token)}`,
       },
     };
+
+    console.log("token before get request: " + access_token);
     var artistID = await axios
       .get(
         "https://api.spotify.com/v1/search?q=" +
@@ -60,9 +63,11 @@ function Searchbar() {
           artistParameters
       )
       .then((response) => {
+        console.log("token on successful get request: " + access_token);
         console.log(response.data);
       })
       .catch((error) => {
+        console.log("token on unsuccessful get request: " + access_token);
         console.log("Error Searching artist " + error);
       });
 
