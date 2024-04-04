@@ -47,7 +47,7 @@ function Searchbar() {
     console.log("searching for " + searchInput); // testing search input
     console.log(access_token);
     // Artist ID -> get request using search to get Artist ID
-    const artistParameters = {
+    const searchParameters = {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${access_token}`, // Correctly format the Authorization header
@@ -56,20 +56,28 @@ function Searchbar() {
 
     console.log("token before get request: " + access_token);
     try {
-      const response = await axios.get(
-        `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-          searchInput
-        )}&type=artist`,
-        artistParameters // Correctly pass headers as the second argument
-      );
+      const artistID = await axios
+        .get(
+          `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+            searchInput
+          )}&type=artist`,
+          searchParameters // Correctly pass headers as the second argument
+        )
+        .then((response) => {
+          return response.data.artists.items[0].id;
+        });
+
+      console.log("the artist ID is: " + artistID);
+
       console.log("token on successful get request: " + access_token);
-      console.log(response.data);
       // Handle successful response
     } catch (error) {
       console.log("token on unsuccessful get request: " + access_token);
       console.error("Error Searching artist", error);
       // Handle error
     }
+
+    //GET ARTIST ALBUMS
   }
 
   return (
