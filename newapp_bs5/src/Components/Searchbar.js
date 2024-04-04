@@ -11,7 +11,8 @@ const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
-  const [accessToken, setAccessToken] = useState("");
+  //const [accessToken, setAccessToken] = useState("");
+  var access_token = "";
   //var [refreshToken, setRefreshToken] = useState("");
 
   useEffect(() => {
@@ -25,11 +26,12 @@ function Searchbar() {
     axios
       .post("https://accounts.spotify.com/api/token", data, { headers })
       .then((response) => {
-        setAccessToken(response.data.access_token); // saving the access token
+        //setAccessToken(response.data.access_token); // saving the access token
+        access_token = response.data.access_token;
 
         console.log(response.data); // Here you would typically store the access token in the state or context
 
-        console.log("the stored token is: " + accessToken);
+        console.log("the stored token is: " + access_token);
       })
 
       .catch((error) =>
@@ -45,16 +47,20 @@ function Searchbar() {
 
     // Artist ID -> get request using search to get Artist ID
     const artistParameters = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access_token}`,
+      },
     };
     var artistID = await axios
       .get(
-        "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
-        { artistParameters }
+        "https://api.spotify.com/v1/search?q=" +
+          searchInput +
+          "&type=artist" +
+          artistParameters
       )
       .then((response) => {
-        console.log(response.json()).then((data) => console.log(data));
+        console.log(response.data);
       })
       .catch((error) => {
         console.log("Error Searching artist " + error);
