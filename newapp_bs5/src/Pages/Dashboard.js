@@ -1,5 +1,6 @@
 import Sidebar from "../Components/Sidebar.js";
 import Cards from "../Components/Cards.js";
+import Table from "../Components/Table.js";
 import "../Styles/Dashboard.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,10 +32,11 @@ function Dashboard() {
           </div>
 
           {/* Below is the Card section */}
+
           <div className="row row-card-car">
             <div className="col-12">
               <div className="card-scroller">
-                <Cards />
+                <Table />
               </div>
             </div>
           </div>
