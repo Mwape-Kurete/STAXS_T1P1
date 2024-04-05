@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import qs from "qs"; // Import qs for query string parsing
 import "../Styles/Searchbar.css"; // Make sure the path to your CSS file is correct
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 // It's recommended to use environment variables for sensitive data
 // For local development, you might need to prefix these with REACT_APP_
@@ -12,7 +13,9 @@ var access_token = "";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
-  //const [accessToken, setAccessToken] = useState("");
+  //const [accessToken, setAccessToken] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedArtists, setSelectedArtists] = useState([]);
 
   //var [refreshToken, setRefreshToken] = useState("");
 
@@ -56,29 +59,37 @@ function Searchbar() {
 
     console.log("token before get request: " + access_token);
     try {
-      const artistID = await axios
-        .get(
-          `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-            searchInput
-          )}&type=artist`,
-          searchParameters // Correctly pass headers as the second argument
-        )
-        .then((response) => {
-          return response.data.artists.items[0].id;
-        });
+      const response = await axios.get(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+          searchInput
+        )}&type=artist`,
+        searchParameters // Correctly pass headers as the second argument
+      );
+      setSearchResults(response.data.artists.items); // Set the search results
 
-      console.log("the artist ID is: " + artistID);
+      console.log("the artist ID is: " + response);
 
       console.log("token on successful get request: " + access_token);
       // Handle successful response
+
+      //the above stores the artist results in searchResults
     } catch (error) {
       console.log("token on unsuccessful get request: " + access_token);
       console.error("Error Searching artist", error);
       // Handle error
     }
-
-    //GET ARTIST ALBUMS
   }
+
+  const handleSelectArtist = (artist) => {
+    if (
+      selectedArtists.length < 2 &&
+      !selectedArtists.find((a) => a.id === artist.id)
+    ) {
+      const newSelections = [...selectedArtists, artist];
+      setSelectedArtists(newSelections);
+      localStorage.setItem("selectedArtists", JSON.stringify(newSelections));
+    }
+  };
 
   return (
     <div className="container-fluid search-cont">
@@ -113,6 +124,53 @@ function Searchbar() {
               Search
             </button>
           </form>
+        </div>
+        <div className="col-12 results-col">
+          <p>
+            <a
+              className="btn btn-primary"
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              show search results
+            </a>
+          </p>
+          <div className="collapse" id="collapseExample">
+            <div className="card card-body overflow-auto">
+              {/* Render search results */}
+              {searchResults.length > 0 && (
+                <div className="search-results-dropdown">
+                  {searchResults.map((artist) => (
+                    <span
+                      className="badge badge-results"
+                      key={artist.id}
+                      onClick={() => handleSelectArtist(artist)}
+                    >
+                      {artist.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Display selected artists */}
+          {selectedArtists.length > 0 && (
+            <div className="selected-artists">
+              <h4>Selected Artists:</h4>
+              {selectedArtists.map((artist) => (
+                <span
+                  className="badge rounded-pill badge-selected"
+                  key={artist.id}
+                >
+                  {artist.name}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
