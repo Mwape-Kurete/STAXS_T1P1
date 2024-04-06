@@ -57,6 +57,26 @@
   margin: 5px;
 }
 
+.badge-selected:hover {
+  background: rgba(255, 107, 97, 0.702);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.badge-selected:active {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
 .search-results-dropdown {
   max-width: 85%;
   justify-content: center;

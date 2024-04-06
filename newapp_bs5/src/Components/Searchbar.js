@@ -65,14 +65,11 @@ function Searchbar() {
         )}&type=artist`,
         searchParameters // Correctly pass headers as the second argument
       );
-      setSearchResults(response.data.artists.items); // Set the search results
+      setSearchResults(response.data.artists.items); //the above stores the artist results in searchResults
 
       console.log("the artist ID is: " + response);
 
       console.log("token on successful get request: " + access_token);
-      // Handle successful response
-
-      //the above stores the artist results in searchResults
     } catch (error) {
       console.log("token on unsuccessful get request: " + access_token);
       console.error("Error Searching artist", error);
@@ -80,16 +77,34 @@ function Searchbar() {
     }
   }
 
-  const handleSelectArtist = (artist) => {
-    if (
-      selectedArtists.length < 2 &&
-      !selectedArtists.find((a) => a.id === artist.id)
-    ) {
-      const newSelections = [...selectedArtists, artist];
-      setSelectedArtists(newSelections);
-      localStorage.setItem("selectedArtists", JSON.stringify(newSelections));
+  // Toggle an artist's selection state
+  const toggleSelectedArtist = (artist) => {
+    const isSelected = selectedArtists.some(
+      (selected) => selected.id === artist.id
+    );
+
+    let newSelectedArtists;
+    if (isSelected) {
+      // Artist is already selected, remove them
+      newSelectedArtists = selectedArtists.filter(
+        (selected) => selected.id !== artist.id
+      );
+    } else {
+      // Add the artist to the selection if we have less than 2 artists selected
+      if (selectedArtists.length < 2) {
+        newSelectedArtists = [...selectedArtists, artist];
+      } else {
+        // Optionally handle the case where there are already 2 artists selected
+        alert("Maximum of 2 artists can be selected.");
+        return; // Early return if we're not changing the selection
+      }
     }
+    // Update state and local storage
+    setSelectedArtists(newSelectedArtists);
+    localStorage.setItem("selectedArtists", JSON.stringify(newSelectedArtists));
   };
+
+  console.log(selectedArtists);
 
   return (
     <div className="container-fluid search-cont">
@@ -147,7 +162,7 @@ function Searchbar() {
                     <span
                       className="badge badge-results"
                       key={artist.id}
-                      onClick={() => handleSelectArtist(artist)}
+                      onClick={() => toggleSelectedArtist(artist)}
                     >
                       {artist.name}
                     </span>
@@ -165,6 +180,7 @@ function Searchbar() {
                 <span
                   className="badge rounded-pill badge-selected"
                   key={artist.id}
+                  onClick={() => toggleSelectedArtist(artist)}
                 >
                   {artist.name}
                 </span>
