@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import "../Styles/ChartGraphs.css";
 import axios from "axios";
+const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+const TARGET_URL = "https://songstats.p.rapidapi.com/artists/stats";
 
 function Chart_Artists() {
   const [artist, setArtist] = useState([]);
-  const API_KEY_STATS = "5ef64f1a60mshf414ed93a55afc1p1aff94jsn595f489f163e";
+  const [artistStats, setArtistStats] = useState([]);
+
+  const API_KEY_STATS = "141d636a64msh40818e52ee62873p1316a2jsn43263d1809f7";
+
   const artistID = [];
 
   useEffect(() => {
@@ -19,46 +24,47 @@ function Chart_Artists() {
     return () => clearInterval(intervalId);
   }, [artist]);
 
-  const getArtistID = () => {
-    artist.forEach((artistData) => {
-      artistID.push(artistData.id);
-    });
+  // const getArtistID = () => {
+  //   artist.forEach((artistData) => {
+  //     artistID.push(artistData.id);
+  //   });
 
-    console.log("artist ID: " + artistID);
-  };
+  //   console.log("artist ID: " + artistID);
+  // };
 
-  getArtistID();
-
+  // getArtistID();
   useEffect(() => {
-    const getArtistStats = async () => {
-      //checking the array has data to loop through
-      if (artist.length === 0) return;
+    const fetchArtistStats = async () => {
+      if (artist.length === 0) return; // Exit if there are no artists to fetch
 
-      const artistIDs = artist.map((a) => a.id).slice(0, 2); // ensures that only the first 2 objects are read
-      const requests = artistIDs.map((id) => {
-        const options = {
-          method: "GET",
-          url: "https://songstats.p.rapidapi.com/artists/info",
-          params: {
-            spotify_artist_id: id,
-          },
-          headers: {
-            "X-RapidAPI-Key": API_KEY_STATS,
-            "X-RapidAPI-Host": "songstats.p.rapidapi.com",
-          },
-        };
-        return axios.request(options);
+      const requests = artist.slice(0, 2).map((artistData) => {
+        // Limit to the first two artists to prevent 429 errors
+        return axios
+          .get(`${PROXY_URL}${TARGET_URL}`, {
+            params: { source: "spotify", spotify_artist_id: artistData.id },
+            headers: {
+              "X-RapidAPI-Key": API_KEY_STATS,
+              "X-RapidAPI-Host": "songstats.p.rapidapi.com",
+            },
+          })
+          .then((response) => ({ success: true, data: response.data }))
+          .catch((error) => ({ success: false, error: error.toString() }));
       });
+
       try {
-        const responses = await Promise.all(requests);
-        // Process responses here
-        console.log(responses.map((response) => response.data)); // Example of logging out each response data
+        const results = await Promise.all(requests);
+        setArtistStats(
+          results
+            .filter((result) => result.success)
+            .map((result) => result.data)
+        );
       } catch (error) {
-        console.error("Failed to fetch artist stats:", error);
+        console.error("Error fetching artist stats", error);
       }
     };
-    getArtistStats();
-  }, [artist]);
+
+    fetchArtistStats();
+  }, [artist]); // Depend on artist array to re-run
 
   return (
     <div className="graph-cont">
