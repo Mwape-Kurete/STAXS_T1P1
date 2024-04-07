@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
+import { AuthTokenProvider } from "./Data/AUTH";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
-    <App />
-  </>
+  <React.StrictMode>
+    <AuthTokenProvider>
+      <App />
+    </AuthTokenProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

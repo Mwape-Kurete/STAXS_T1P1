@@ -21,7 +21,7 @@
 }
 
 .nav-link:hover {
-  color: #ff6b61 !important;
+  color: rgb(255, 107, 97) !important;
   font-family: "Josefin Sans", sans-serif !important;
   font-optical-sizing: auto !important;
   font-weight: 300 !important;

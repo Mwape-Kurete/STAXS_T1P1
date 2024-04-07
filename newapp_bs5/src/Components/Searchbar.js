@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import qs from "qs"; // Import qs for query string parsing
-import "../Styles/Searchbar.css"; // Make sure the path to your CSS file is correct
+import "../Styles/Searchbar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { useAuthToken } from "../Data/AUTH";
 
 // It's recommended to use environment variables for sensitive data
 // For local development, you might need to prefix these with REACT_APP_
-const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
-const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
-//const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
-var access_token = "";
+// const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
+// const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
+// const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
+// var access_token = "";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
@@ -17,47 +18,49 @@ function Searchbar() {
   const [searchResults, setSearchResults] = useState([]);
   const [selectedArtists, setSelectedArtists] = useState([]);
 
+  const { authToken } = useAuthToken();
+
   //var [refreshToken, setRefreshToken] = useState("");
 
-  useEffect(() => {
-    const data = qs.stringify({ grant_type: "client_credentials" });
-    //const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Basic ${btoa(CLIENT_ID + ":" + CLIENT_SECRET)}`, // Base64 encode client ID and client secret
-    };
+  // useEffect(() => {
+  //   const data = qs.stringify({ grant_type: "client_credentials" });
+  //   //const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
+  //   const headers = {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //     Authorization: `Basic ${btoa(CLIENT_ID + ":" + CLIENT_SECRET)}`, // Base64 encode client ID and client secret
+  //   };
 
-    axios
-      .post("https://accounts.spotify.com/api/token", data, { headers })
-      .then((response) => {
-        //setAccessToken(response.data.access_token); // saving the access token
-        access_token = response.data.access_token;
+  //   axios
+  //     .post("https://accounts.spotify.com/api/token", data, { headers })
+  //     .then((response) => {
+  //       //setAccessToken(response.data.access_token); // saving the access token
+  //       access_token = response.data.access_token;
 
-        console.log(response.data); // Here you would typically store the access token in the state or context
+  //       console.log(response.data); // Here you would typically store the access token in the state or context
 
-        console.log("the stored token is: " + access_token);
-      })
+  //       console.log("the stored token is: " + access_token);
+  //     })
 
-      .catch((error) =>
-        console.error("Error fetching the access token:", error)
-      );
+  //     .catch((error) =>
+  //       console.error("Error fetching the access token:", error)
+  //     );
 
-    // Axios POST request to refresh the access token using the refresh token
-  }, []);
+  //   // Axios POST request to refresh the access token using the refresh token
+  // }, []);
 
   //Search --> NEEDS TO BE ASYNC BECAUSE OF MULTIPLE FETCH FUNCTIONS
   async function search() {
     console.log("searching for " + searchInput); // testing search input
-    console.log(access_token);
+    console.log(authToken);
     // Artist ID -> get request using search to get Artist ID
     const searchParameters = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${access_token}`, // Correctly format the Authorization header
+        Authorization: `Bearer ${authToken}`, // Correctly format the Authorization header
       },
     };
 
-    console.log("token before get request: " + access_token);
+    console.log("token before get request: " + authToken);
     try {
       const response = await axios.get(
         `https://api.spotify.com/v1/search?q=${encodeURIComponent(
@@ -69,9 +72,9 @@ function Searchbar() {
 
       console.log("the artist ID is: " + response);
 
-      console.log("token on successful get request: " + access_token);
+      console.log("token on successful get request: " + useAuthToken);
     } catch (error) {
-      console.log("token on unsuccessful get request: " + access_token);
+      console.log("token on unsuccessful get request: " + authToken);
       console.error("Error Searching artist", error);
       // Handle error
     }
