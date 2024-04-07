@@ -4,26 +4,60 @@ import axios from "axios";
 
 function Chart_Artists() {
   const [artist, setArtist] = useState([]);
-
-  //the following code ensures that my search bar is appropriatley updated
-
-  const updateLocalStorage = (newData) => {
-    localStorage.setArtist("selectedArtists", JSON.stringify(newData));
-    window.dispatchEvent(new CustomEvent("localDataUpdated"));
-  };
+  const API_KEY_STATS = "5ef64f1a60mshf414ed93a55afc1p1aff94jsn595f489f163e";
+  const artistID = [];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const storedArtists = JSON.parse(
         localStorage.getItem("selectedArtists") || "[]"
       );
-      // Only update if there are changes
       if (JSON.stringify(storedArtists) !== JSON.stringify(artist)) {
         setArtist(storedArtists);
       }
-    }, 1000); // Every 1000 milliseconds
-
+    }, 1000);
     return () => clearInterval(intervalId);
+  }, [artist]);
+
+  const getArtistID = () => {
+    artist.forEach((artistData) => {
+      artistID.push(artistData.id);
+    });
+
+    console.log("artist ID: " + artistID);
+  };
+
+  getArtistID();
+
+  useEffect(() => {
+    const getArtistStats = async () => {
+      //checking the array has data to loop through
+      if (artist.length === 0) return;
+
+      const artistIDs = artist.map((a) => a.id).slice(0, 2); // ensures that only the first 2 objects are read
+      const requests = artistIDs.map((id) => {
+        const options = {
+          method: "GET",
+          url: "https://songstats.p.rapidapi.com/artists/info",
+          params: {
+            spotify_artist_id: id,
+          },
+          headers: {
+            "X-RapidAPI-Key": API_KEY_STATS,
+            "X-RapidAPI-Host": "songstats.p.rapidapi.com",
+          },
+        };
+        return axios.request(options);
+      });
+      try {
+        const responses = await Promise.all(requests);
+        // Process responses here
+        console.log(responses.map((response) => response.data)); // Example of logging out each response data
+      } catch (error) {
+        console.error("Failed to fetch artist stats:", error);
+      }
+    };
+    getArtistStats();
   }, [artist]);
 
   return (
