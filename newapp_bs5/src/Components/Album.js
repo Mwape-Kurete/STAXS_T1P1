@@ -1,6 +1,11 @@
 import "../Styles/Album.css";
 import Solange from "../img/Solange - A Seat At the Table (2 LPs) - 2 Vinyl LP _ 08-12-2016 _ Regulier Vinyl.jpeg";
-import Linegraph from "./charts/Linegraph";
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useAuthToken } from "../Data/AUTH";
+import Chart_Album from "./Chart_Album";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -37,50 +42,8 @@ function Album() {
         </div>
         <div className="col-12 timeline-cont">
           <div className="row">
-            <div className="col timeline">
-              <Linegraph />
-            </div>
-            <div className="col-2 filters">
-              <div className="col-12 comp-filter">
-                <div
-                  class="btn-group-vertical"
-                  role="group"
-                  aria-label="Vertical radio toggle button group"
-                >
-                  <input
-                    type="radio"
-                    class="btn-check"
-                    name="vbtn-radio"
-                    id="vbtn-radio1"
-                    autocomplete="off"
-                    checked
-                  />
-                  <label class="btn btn-outline-light" for="vbtn-radio1">
-                    Radio 1
-                  </label>
-                  <input
-                    type="radio"
-                    class="btn-check"
-                    name="vbtn-radio"
-                    id="vbtn-radio2"
-                    autocomplete="off"
-                  />
-                  <label class="btn btn-outline-light" for="vbtn-radio2">
-                    Radio 2
-                  </label>
-                  <input
-                    type="radio"
-                    class="btn-check"
-                    name="vbtn-radio"
-                    id="vbtn-radio3"
-                    autocomplete="off"
-                  />
-                  <label class="btn btn-outline-light" for="vbtn-radio3">
-                    Radio 3
-                  </label>
-                </div>
-              </div>
-            </div>
+            {/* place chart album component here */}
+            <Chart_Album />
           </div>
         </div>
       </div>
