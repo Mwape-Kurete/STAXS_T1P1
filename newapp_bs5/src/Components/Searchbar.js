@@ -49,6 +49,7 @@ function Searchbar() {
   // }, []);
 
   //Search --> NEEDS TO BE ASYNC BECAUSE OF MULTIPLE FETCH FUNCTIONS
+
   async function search() {
     console.log("searching for " + searchInput); // testing search input
     console.log(authToken);

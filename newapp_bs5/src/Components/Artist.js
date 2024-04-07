@@ -45,7 +45,7 @@ function Artist() {
                 <CloseButton />
               </div>
               <img
-                src={artist.images[0].url}
+                src={artist.images?.[0]?.url ?? Temp1}
                 alt={artist.name}
                 className="artist-img"
               />
