@@ -31,7 +31,7 @@ function Table() {
         console.log(response.data);
         // Adjust this line based on the actual structure of your API response
         console.log(response.data.chart.entries);
-        setRankings(response.data.chart.entriest || []);
+        setRankings(response.data.chart.entries || []);
       } catch (error) {
         console.error(error);
       }
@@ -45,7 +45,10 @@ function Table() {
     <div className="mainTableCont">
       <div className="table-responsive">
         <h1>The Billboard Hot100 on {formattedDate}</h1>
-        <table className="table">
+        <table className="table overflow-auto table-sm table-element">
+          <caption>
+            these are the Billboard hot100 top 5 songs for today
+          </caption>
           <thead className="tableHeader">
             <tr>
               <th scope="col" id="tableImg">
@@ -55,12 +58,13 @@ function Table() {
               <th scope="col">Title</th>
               <th scope="col">Artist</th>
               <th scope="col">Peak Position</th>
-              <th scope="col">Weeks on Chart</th>
             </tr>
           </thead>
           <tbody>
-            {rankings.slice(0, 10).map((song) => (
-              <tr key={song.rank}>
+            {rankings.slice(0, 5).map((song, index) => (
+              <tr key={song.rank || index}>
+                {" "}
+                {/* index is a precaution */}
                 <td>
                   <img
                     src={song.cover}

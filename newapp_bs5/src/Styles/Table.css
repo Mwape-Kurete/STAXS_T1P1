@@ -5,10 +5,22 @@ table.table {
   border-radius: 10px;
 }
 
+tbody {
+  max-height: 250px;
+  overflow-y: scroll;
+}
 h1 {
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
   color: white;
+}
+
+caption {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: rgb(172, 224, 51);
 }
