@@ -5,13 +5,6 @@ import "../Styles/Searchbar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { useAuthToken } from "../Data/AUTH";
 
-// It's recommended to use environment variables for sensitive data
-// For local development, you might need to prefix these with REACT_APP_
-// const CLIENT_ID = "6dfe161492d14a558bea14512386b896";
-// const CLIENT_SECRET = "7d449a9084ca46b2a30397b3d9ad11c8";
-// const REDIRECT_URI = "http://localhost:3000/callback"; //this is to aid in creating a refresh token
-// var access_token = "";
-
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
   const [topTracks, setTopTracks] = useState([]);
@@ -19,36 +12,6 @@ function Searchbar() {
   const [selectedArtists, setSelectedArtists] = useState([]);
 
   const { authToken } = useAuthToken();
-
-  //var [refreshToken, setRefreshToken] = useState("");
-
-  // useEffect(() => {
-  //   const data = qs.stringify({ grant_type: "client_credentials" });
-  //   //const refresh_data = qs.stringify({ grant_type: "refresh_token" }); // Include the refresh token
-  //   const headers = {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //     Authorization: `Basic ${btoa(CLIENT_ID + ":" + CLIENT_SECRET)}`, // Base64 encode client ID and client secret
-  //   };
-
-  //   axios
-  //     .post("https://accounts.spotify.com/api/token", data, { headers })
-  //     .then((response) => {
-  //       //setAccessToken(response.data.access_token); // saving the access token
-  //       access_token = response.data.access_token;
-
-  //       console.log(response.data); // Here you would typically store the access token in the state or context
-
-  //       console.log("the stored token is: " + access_token);
-  //     })
-
-  //     .catch((error) =>
-  //       console.error("Error fetching the access token:", error)
-  //     );
-
-  //   // Axios POST request to refresh the access token using the refresh token
-  // }, []);
-
-  //Search --> NEEDS TO BE ASYNC BECAUSE OF MULTIPLE FETCH FUNCTIONS
 
   async function search() {
     console.log("searching for " + searchInput); // testing search input
