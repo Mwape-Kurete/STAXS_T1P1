@@ -14,7 +14,7 @@ import { useAuthToken } from "../Data/AUTH";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
-  //const [accessToken, setAccessToken] = useState([]);
+  const [topTracks, setTopTracks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [selectedArtists, setSelectedArtists] = useState([]);
 
@@ -70,8 +70,10 @@ function Searchbar() {
         searchParameters // Correctly pass headers as the second argument
       );
       setSearchResults(response.data.artists.items); //the above stores the artist results in searchResults
-
+      const firstArtistID = response.data.artists.items[0].id;
       console.log("the artist ID is: " + response);
+
+      getTopTracks(firstArtistID);
 
       console.log("token on successful get request: " + useAuthToken);
     } catch (error) {
@@ -81,11 +83,44 @@ function Searchbar() {
     }
   }
 
+  async function getTopTracks(artistID) {
+    if (!artistID) return;
+
+    const searchParams = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`, // Correctly format the Authorization header
+      },
+    };
+
+    try {
+      const response = await axios.get(
+        `https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=US`, // Added a market query parameter
+        searchParams
+      );
+
+      setTopTracks(response.data.tracks);
+      localStorage.setItem("topTracks", JSON.stringify(response.data.tracks));
+
+      console.log("Top tracks fetched and stored for artist ID:", artistID);
+    } catch (error) {
+      console.error(
+        "Error fetching top tracks for artist ID:",
+        artistID,
+        error
+      );
+    }
+
+    console.log(topTracks);
+  }
+
   // Toggle an artist's selection state
   const toggleSelectedArtist = (artist) => {
     const isSelected = selectedArtists.some(
       (selected) => selected.id === artist.id
     );
+
+    getTopTracks(artist.id);
 
     let newSelectedArtists;
     if (isSelected) {
