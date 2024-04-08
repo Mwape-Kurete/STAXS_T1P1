@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
-import { AuthTokenProvider } from "./Data/AUTH";
+import { AuthTokenProvider } from "./Data/AUTH"; //authorizaation token file
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

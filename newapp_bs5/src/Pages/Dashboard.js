@@ -14,7 +14,7 @@ function Dashboard() {
       <div className="row">
         {/* below is the sidebar section */}
         <div className="col-2 sidebar-col">
-          <Sidebar />
+          <Sidebar /> {/* calling the sidebar component*/}
         </div>
         {/* below is the main page content */}
         <div className="col justify-content-md-center">
@@ -36,7 +36,7 @@ function Dashboard() {
           <div className="row row-card-car">
             <div className="col-12">
               <div className="card-scroller">
-                <Table />
+                <Table /> {/* calling the table component*/}
               </div>
             </div>
           </div>

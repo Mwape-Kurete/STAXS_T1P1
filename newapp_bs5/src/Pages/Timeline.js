@@ -8,12 +8,12 @@ function Timeline() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-2 sidebar-col">
-          <Sidebar />
+          <Sidebar /> {/* calling the sidebar component*/}
         </div>
         <div className="col justify-content-md-center">
           <div className="row">
             <div className="col-12 searchbar">
-              <Searchbar />
+              <Searchbar /> {/* calling the search component*/}
             </div>
 
             <div className="mainTimelinecont">

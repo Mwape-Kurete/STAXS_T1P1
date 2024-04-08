@@ -9,61 +9,46 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Album() {
-  const [artist, setArtist] = useState(null); // Change to manage a single artist object
+  const [artist, setArtist] = useState([]); // Change to manage a single artist object
   const [trackList, setTrackList] = useState([]);
+  var artistMeta = [];
 
-  // Modify updateLocalStorage to handle a single artist object
-  const updateLocalStorage = (newData) => {
-    localStorage.setItem("selectedArtists", JSON.stringify(newData)); // Assumes newData is an object or null
-    window.dispatchEvent(new CustomEvent("localDataUpdated"));
-  };
-
-  // Adjust useEffect to fetch and set a single artist from local storage
+  // This effect is for initializing and updating the artist based on local storage
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const storedArtist = JSON.parse(
-        localStorage.getItem("selectedArtists") || "null"
-      ); // Expecting a single object or null
-      if (JSON.stringify(storedArtist) !== JSON.stringify(artist)) {
-        setArtist(storedArtist); // Directly set the single artist object
-      }
-    }, 1000); // Every 1000 milliseconds
+    const fetchArtist = () => {
+      const storedArtist = JSON.parse(localStorage.getItem("selectedArtists"));
+      setArtist(storedArtist);
 
-    return () => clearInterval(intervalId);
-  }, [artist]); // Dependency on the single artist object
-
-  // Adjust removeArtist to clear the selected artist
-  const removeArtist = () => {
-    setArtist(null); // Clear the selected artist
-    localStorage.setItem("selectedArtists", JSON.stringify(null)); // Store null to indicate no selected artist
-  };
-
-  // Adjust how you handle artist selection to replace the existing artist
-  const selectArtist = (newArtist) => {
-    setArtist(newArtist); // Set the new artist, replacing any previous selection
-    updateLocalStorage(newArtist); // Update local storage with the new selection
-  };
-
-  useEffect(() => {
-    // Fetch topTracks from local storage
-    const storedTopTracks = JSON.parse(
-      localStorage.getItem("topTracks") || "[]"
-    );
-    setTrackList(storedTopTracks);
-  }, []); // Empty dependency array means this runs once on mount
-
-  useEffect(() => {
-    const handleStorageUpdate = (event) => {
-      if (event.key === "topTracks") {
-        const updatedTopTracks = JSON.parse(event.newValue || "[]");
-        setTrackList(updatedTopTracks);
-      }
+      artistMeta = artist[0];
     };
 
-    window.addEventListener("storage", handleStorageUpdate);
+    // Initialize artist state
+    fetchArtist();
+
+    // Setup a manual update method that can be called after changes
+    // Note: There's no direct way to watch local storage changes in the same window context
+    // So, we expose a method to window for manual calls
+    window.updateAlbumArtist = fetchArtist;
 
     return () => {
-      window.removeEventListener("storage", handleStorageUpdate);
+      // Cleanup to avoid memory leaks or unintended side effects
+      delete window.updateAlbumArtist;
+    };
+  }, []);
+
+  // Similar setup for trackList
+  useEffect(() => {
+    const fetchTopTracks = () => {
+      const storedTopTracks = JSON.parse(localStorage.getItem("topTracks"));
+      setTrackList(storedTopTracks);
+    };
+
+    fetchTopTracks();
+
+    window.updateAlbumTopTracks = fetchTopTracks;
+
+    return () => {
+      delete window.updateAlbumTopTracks;
     };
   }, []);
 
@@ -72,11 +57,8 @@ function Album() {
       <div className="row">
         {/*Display artist image etc*/}
         {/* <div className="col-12 albmun-timeline-cont">
-          {artist && (
+          {artist[0] && (
             <div className="album-info justify-content-md-center">
-              <div className="close" onClick={() => removeArtist}>
-                <CloseButton />
-              </div>
               <img
                 src={artist.images?.[0]?.url ?? Solange}
                 alt={artist.name}

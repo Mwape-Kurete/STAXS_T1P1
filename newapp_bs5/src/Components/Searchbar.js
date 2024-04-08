@@ -4,6 +4,7 @@ import qs from "qs"; // Import qs for query string parsing
 import "../Styles/Searchbar.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { useAuthToken } from "../Data/AUTH";
+import { useLocation } from "react-router-dom";
 
 function Searchbar() {
   const [searchInput, setSearchInput] = useState("");
@@ -13,9 +14,21 @@ function Searchbar() {
 
   const { authToken } = useAuthToken();
 
+  const location = useLocation();
+
+  //refreshing search cache in local storage
+  useEffect(() => {
+    // Reset search input when navigating away from the Timeline page
+    if (location.pathname !== "/timeline" && location.pathname !== "/compare") {
+      setSearchInput("");
+      // Optionally, reset other local component states here if necessary
+    }
+  }, [location]);
+
   async function search() {
     console.log("searching for " + searchInput); // testing search input
     console.log(authToken);
+
     // Artist ID -> get request using search to get Artist ID
     const searchParameters = {
       headers: {
@@ -62,8 +75,18 @@ function Searchbar() {
         searchParams
       );
 
+      // Update the topTracks state and local storage
       setTopTracks(response.data.tracks);
       localStorage.setItem("topTracks", JSON.stringify(response.data.tracks));
+
+      // After updating local storage, call the update functions on Album and Chart_Album components
+      // This ensures they re-fetch their data from local storage
+      if (window.updateAlbumTopTracks) {
+        window.updateAlbumTopTracks();
+      }
+      if (window.updateChartAlbumTracks) {
+        window.updateChartAlbumTracks();
+      }
 
       console.log("Top tracks fetched and stored for artist ID:", artistID);
     } catch (error) {
@@ -107,6 +130,16 @@ function Searchbar() {
   };
 
   console.log(selectedArtists);
+
+  // After updating selectedArtists in local storage
+  if (window.updateAlbumArtist) {
+    window.updateAlbumArtist();
+  }
+
+  // Similarly, after updating topTracks
+  if (window.updateAlbumTopTracks) {
+    window.updateAlbumTopTracks();
+  }
 
   return (
     <div className="container-fluid search-cont">

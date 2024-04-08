@@ -6,67 +6,74 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 
 function Chart_Album() {
-  const [activeGraph, setActiveGraph] = useState("genres");
+  const [activeGraph, setActiveGraph] = useState("danceability");
   const [tracksArr, setTracksArr] = useState([]);
   const [tracksIDs, setTracksIDs] = useState("");
   const [trackProps, setTrackProps] = useState([]);
 
   const { authToken } = useAuthToken();
 
+  // This effect handles updating tracks array from local storage
   useEffect(() => {
-    const storedTopTracksArr = JSON.parse(
-      localStorage.getItem("topTracks") || "[]"
-    );
-    setTracksArr(storedTopTracksArr);
-
-    // Fetch audio features for stored track IDs
-    const trackIDs = storedTopTracksArr.map((track) => track.id).join(",");
-    fetchAudioFeatures(trackIDs);
-  }, [authToken]);
-
-  // useEffect(() => {
-  //   const trackIDs = tracksArr.map((track) => track.id).join(",");
-  //   setTracksIDs(trackIDs);
-  // }, [tracksArr]);
-
-  async function fetchAudioFeatures(trackIDs) {
-    if (!trackIDs) return;
-    const url = `https://api.spotify.com/v1/audio-features?ids=${trackIDs}`;
-    const searchParams = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
-      },
+    const fetchTopTracks = () => {
+      const storedTopTracksArr = JSON.parse(
+        localStorage.getItem("topTracks") || "[]"
+      );
+      setTracksArr(storedTopTracksArr);
     };
 
-    try {
-      const response = await axios.get(url, searchParams);
-      console.log(response.data); // Log the response data
-      const featuresByTrackId = response.data.audio_features.reduce(
-        (acc, feature) => {
-          acc[feature.id] = feature;
-          return acc;
-        },
-        {}
-      );
+    fetchTopTracks();
 
-      setTrackProps(featuresByTrackId);
-    } catch (error) {
-      console.error("Error fetching audio features", error);
-    }
-  }
+    // Expose method to window for manual update calls
+    window.updateChartAlbumTracks = fetchTopTracks;
 
-  // fetchAudioFeatures(tracksIDs); // not needed
+    return () => {
+      // Ensure to clean up to avoid memory leaks
+      delete window.updateChartAlbumTracks;
+    };
+  }, []);
+
+  // This effect triggers fetching audio features when tracksArr updates
+  useEffect(() => {
+    const fetchAudioFeatures = async (trackIDs) => {
+      if (!trackIDs) return;
+      const url = `https://api.spotify.com/v1/audio-features?ids=${trackIDs}`;
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      };
+
+      try {
+        const response = await axios.get(url, { headers });
+        // Simplify data structure for easier use in rendering
+        const featuresIndexedById = response.data.audio_features.reduce(
+          (acc, cur) => {
+            acc[cur.id] = cur;
+            return acc;
+          },
+          {}
+        );
+
+        setTrackProps(featuresIndexedById);
+      } catch (error) {
+        console.error("Error fetching audio features", error);
+      }
+    };
+
+    const trackIDs = tracksArr.map((track) => track.id).join(",");
+    fetchAudioFeatures(trackIDs);
+  }, [tracksArr, authToken]);
 
   const filterGraph = (graphId) => {
     setActiveGraph(graphId);
   };
 
-  // Prepare data for the currently active graph
+  // Prepare data for the currently active graph this is done for brevity so that the html of the application is more simple ad less redundant
   const graphData = {
     labels: tracksArr.map((track) => track.name),
     datasets: [
       {
+        //activee graph function is called to ensure that the filters correspond to what the graph displays
         label: activeGraph.charAt(0).toUpperCase() + activeGraph.slice(1), // Capitalize the activeGraph label
         data: tracksArr.map((track) =>
           trackProps[track.id] ? trackProps[track.id][activeGraph] : 0

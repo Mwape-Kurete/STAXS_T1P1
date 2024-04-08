@@ -5,6 +5,7 @@ import "../Styles/Table.css";
 
 const API_KEY = "5ef64f1a60mshf414ed93a55afc1p1aff94jsn595f489f163e";
 
+//creating a date variable
 const date = new Date();
 const year = date.getFullYear();
 const month = String(date.getMonth() + 1).padStart(2, "0");
