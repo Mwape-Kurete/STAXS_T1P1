@@ -71,7 +71,7 @@ function Album() {
     <div className="container-fluid">
       <div className="row">
         {/*Display artist image etc*/}
-        <div className="col-12 albmun-timeline-cont">
+        {/* <div className="col-12 albmun-timeline-cont">
           {artist && (
             <div className="album-info justify-content-md-center">
               <div className="close" onClick={() => removeArtist}>
@@ -92,7 +92,7 @@ function Album() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
         <div className="col-12 top-track-names">
           <p>
             <a

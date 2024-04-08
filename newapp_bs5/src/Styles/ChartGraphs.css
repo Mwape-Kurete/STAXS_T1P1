@@ -2,7 +2,7 @@ canvas {
   display: block;
   align-items: center;
   box-sizing: border-box;
-  height: 340px;
+  max-height: 340px;
   width: 680px;
   margin: auto;
 }
