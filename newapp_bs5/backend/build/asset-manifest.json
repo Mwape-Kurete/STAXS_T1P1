@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.92f7f677.css",
+    "main.js": "/static/js/main.cddae47b.js",
+    "static/js/453.2019c079.chunk.js": "/static/js/453.2019c079.chunk.js",
+    "static/media/Dashboard.jpg": "/static/media/Dashboard.07eef556f89360b1e32a.jpg",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/6838e615-ab19-49fe-89c8-efbe6964f2bf.jpeg": "/static/media/6838e615-ab19-49fe-89c8-efbe6964f2bf.8df708bb9cc92a04e33e.jpeg",
+    "static/media/Solange - A Seat At the Table (2 LPs) - 2 Vinyl LP _ 08-12-2016 _ Regulier Vinyl.jpeg": "/static/media/Solange - A Seat At the Table (2 LPs) - 2 Vinyl LP _ 08-12-2016 _ Regulier Vinyl.d64e165effefeca34812.jpeg",
+    "static/media/logo.svg": "/static/media/logo.537b2c1b180fc1da05afd4d48e8ecb91.svg",
+    "index.html": "/index.html",
+    "static/media/Group 16.svg": "/static/media/Group 16.edf5bb3836e13fb462678b3f40f45d47.svg",
+    "static/media/Group 15.svg": "/static/media/Group 15.3c34d7c32424acd1d786f083829ead34.svg",
+    "static/media/Group 17.svg": "/static/media/Group 17.b1e3855b970911b3471824988ffa15f2.svg",
+    "main.92f7f677.css.map": "/static/css/main.92f7f677.css.map",
+    "main.cddae47b.js.map": "/static/js/main.cddae47b.js.map",
+    "453.2019c079.chunk.js.map": "/static/js/453.2019c079.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92f7f677.css",
+    "static/js/main.cddae47b.js"
+  ]
+}
