@@ -2,11 +2,15 @@ const path = require("path");
 const express = require("express");
 const axios = require("axios");
 const qs = require("qs");
+const cors = require("cors");
 const app = express();
 require("dotenv").config(); // Load environment variables from a .env file
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
+
+// Enable CORS for all routes (allowing all origins)
+app.use(cors());
 
 // Middleware for logging requests (useful for debugging)
 app.use((req, res, next) => {
