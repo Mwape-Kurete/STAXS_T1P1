@@ -1,8 +1,8 @@
 # STAXS README 
 ![cover](https://github.com/Mwape-Kurete/STAXS_T1P1/assets/125279827/8823557a-6fcb-4c23-ae45-7f6754378fa7)
-Welocome to Stax a React app that gives you the ability to comapare your favourite artists, view album and artist stats. 
+Welcome to Stax a React app that gives you the ability to compare your favourite artists, and view album and artist stats. 
 
-This React application demostrates component based website devolpment, highlighting reacts modulation abilities, and how Cahrt.js can help visually display information. 
+This React application demostrates component based website devolpment, highlighting reacts modulation abilities, and how Chart.js can help visually display information. 
 
 # Table of Contents 
 - [Project Objectives & Requirements](#project-objectives-&-requirements)
@@ -18,10 +18,10 @@ When presented with the project brief along with my deep interest in music, I th
 
 This choice allowed me to create an application that accurately and efficiently allowed users to: 
 - create and compare 2 objects
-- display information / data on those objects in 3 different charts
+- display information/data on those objects in 3 different charts
 - Select an artist object who's:
       Top Tracks are then displayed
-      Top Tracks Track features are visualised in changeable timeline
+      Top Tracks Track features are visualised in a changeable timeline
 - Update and change objects at any time 
 
 ## Project Requirements 
